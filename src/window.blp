@@ -2,72 +2,72 @@ using Gtk 4.0;
 using Adw 1;
 using Granite 7.0;
 
-template $WelcomeWindow : Adw.ApplicationWindow {
-
-  title: _("meow");
-
-  default-width: 400;
-  default-height: 350;
+template $WelcomeWindow: Adw.ApplicationWindow {
+  title: _("Welcome to Usagi");
+  default-width: 410;
+  default-height: 370;
 
   Adw.NavigationView nav {
-
     Adw.NavigationPage page1 {
+      tag: "page1";
       title: _("Welcome");
 
       Box {
         orientation: vertical;
-        spacing: 8;
-        margin-top: 24;
-        margin-bottom: 12;
-        margin-start: 12;
-        margin-end: 12;
 
-        Image {
+        Box {
+          vexpand: true;
+        }
+
+        Adw.StatusPage {
           icon-name: "distributor-logo";
-          pixel-size: 64;
+          title: _("Welcome to your new computer experience!");
+          description: _("Usagi is designed to be simple, easy, and ready to use out-of-the-box.");
+
+          styles [
+            "compact",
+          ]
         }
 
-        Label {
-          label: _("Welcome to Cocoa");
-          styles ["title-1", "accent"]
+        Box {
+          vexpand: true;
         }
-
-        Label {
-          wrap: true;
-          justify: center;
-          label: _("Cocoa is a Fedora Atomic image with Pantheon and batteries included.");
-          styles ["body", "dim-label"]
-        }
-
-        Box { vexpand: true; }
 
         CenterBox {
+          margin-bottom: 6;
+          margin-top: 6;
+          margin-start: 6;
+          margin-end: 6;
 
           start-widget: Button skip {
-            label: _("Skip");
+            label: _("Skip Setup");
             action-name: "app.quit";
+            width-request: 80;
           };
 
-          center-widget: Box {
-            margin-top: 10;
-            margin-bottom: 10;
+          center-widget: LevelBar {
+            min-value: 0;
+            max-value: 1;
+            value: 0.20;
+            hexpand: true;
+            valign: center;
             margin-start: 24;
             margin-end: 24;
 
-            LevelBar {
-              min-value: 0;
-              max-value: 1;
-              value: 0.25;
-              hexpand: true;
-              styles ["accent"]
-            }
+            styles [
+              "accent",
+            ]
           };
 
           end-widget: Button next1 {
             label: _("Next");
             action-name: "navigation.push";
             action-target: "'page2'";
-            styles ["suggested-action"]
+            width-request: 80;
+
+            styles [
+              "suggested-action",
+            ]
           };
         }
       }
@@ -75,66 +75,66 @@ template $WelcomeWindow : Adw.ApplicationWindow {
 
     Adw.NavigationPage page2 {
       tag: "page2";
-      title: _("meow?");
+      title: _("Apps");
 
       Box {
         orientation: vertical;
-        spacing: 12;
-        margin-top: 24;
-        margin-bottom: 12;
-        margin-start: 12;
-        margin-end: 12;
 
-        Image {
+        Box {
+          vexpand: true;
+        }
+
+        Adw.StatusPage {
           icon-name: "distributor-logo";
-          pixel-size: 64;
+          title: _("Everything you need");
+          description: _(
+            "Usagi comes with everything you need for web browsing, writing, and watching media. Need anything else? You can find more apps in AppCenter."
+          );
+
+          styles [
+            "compact",
+          ]
         }
 
-        Label {
-          label: _("meow meow meow");
-          styles ["title-1"]
+        Box {
+          vexpand: true;
         }
-
-        Label {
-          wrap: true;
-          label: _("meow. meow meow meow meow meow meow meow meow meow.");
-          styles ["body"]
-        }
-
-        Label {
-          wrap: true;
-          label: _("meow meow meow meow meow meow. prrr meow meow meow meow.");
-          styles ["body", "dim-label"]
-        }
-
-        Box { vexpand: true; }
 
         CenterBox {
+          margin-bottom: 6;
+          margin-top: 6;
+          margin-start: 6;
+          margin-end: 6;
 
           start-widget: Button back2 {
             label: _("Back");
             action-name: "navigation.pop";
+            width-request: 80;
           };
 
-          center-widget: Box {
-            margin-top: 10;
-            margin-bottom: 10;
+          center-widget: LevelBar {
+            min-value: 0;
+            max-value: 1;
+            value: 0.40;
+            hexpand: true;
+            valign: center;
             margin-start: 24;
             margin-end: 24;
 
-            LevelBar {
-              min-value: 0;
-              max-value: 1;
-              value: 0.5;
-              hexpand: true;
-            }
+            styles [
+              "accent",
+            ]
           };
 
           end-widget: Button next2 {
             label: _("Next");
             action-name: "navigation.push";
             action-target: "'page3'";
-            styles ["suggested-action"]
+            width-request: 80;
+
+            styles [
+              "suggested-action",
+            ]
           };
         }
       }
@@ -142,66 +142,73 @@ template $WelcomeWindow : Adw.ApplicationWindow {
 
     Adw.NavigationPage page3 {
       tag: "page3";
-      title: _("meow");
+      title: _("Safety");
 
       Box {
         orientation: vertical;
-        spacing: 12;
-        margin-top: 24;
-        margin-bottom: 12;
-        margin-start: 12;
-        margin-end: 12;
 
-        Image {
-          icon-name: "distributor-logo";
-          pixel-size: 64;
+        Box {
+          vexpand: true;
         }
 
-        Label {
-          label: _("meow meow meow meow");
-          styles ["title-1"]
+        Adw.StatusPage {
+          icon-name: "system-software-update";
+          title: _("Safe, secure, and reliable");
+
+          styles [
+            "compact",
+          ]
+
+          child: Adw.PreferencesGroup {
+            Adw.ActionRow {
+              title: _("Worry-free system updates");
+              subtitle: _(
+                "System updates install in the background without interrupting your work. If anything ever goes wrong, your computer automatically can roll back to the last working update."
+              );
+              icon-name: "system-run-symbolic";
+            }
+          };
         }
 
-        Label {
-          wrap: true;
-          label: _("• meow meow meow\n• meow meow meow meow\n• meow meow meow meow meow\n• meow meow meow meow meow meow");
-          styles ["body"]
+        Box {
+          vexpand: true;
         }
-
-        Adw.ActionRow {
-          title: _("meow?");
-          subtitle: _("meow meow meow meow meow meow meow");
-          styles ["card"]
-        }
-
-        Box { vexpand: true; }
 
         CenterBox {
+          margin-bottom: 6;
+          margin-top: 6;
+          margin-start: 6;
+          margin-end: 6;
 
           start-widget: Button back3 {
             label: _("Back");
             action-name: "navigation.pop";
+            width-request: 80;
           };
 
-          center-widget: Box {
-            margin-top: 10;
-            margin-bottom: 10;
+          center-widget: LevelBar {
+            min-value: 0;
+            max-value: 1;
+            value: 0.60;
+            hexpand: true;
+            valign: center;
             margin-start: 24;
             margin-end: 24;
 
-            LevelBar {
-              min-value: 0;
-              max-value: 1;
-              value: 0.8;
-              hexpand: true;
-            }
+            styles [
+              "accent",
+            ]
           };
 
           end-widget: Button next3 {
             label: _("Next");
             action-name: "navigation.push";
             action-target: "'page4'";
-            styles ["suggested-action"]
+            width-request: 80;
+
+            styles [
+              "suggested-action",
+            ]
           };
         }
       }
@@ -209,126 +216,233 @@ template $WelcomeWindow : Adw.ApplicationWindow {
 
     Adw.NavigationPage page4 {
       tag: "page4";
-      title: _("Choose your look");
+      title: _("Appearance");
 
       Box {
         orientation: vertical;
-        spacing: 16;
-        margin-top: 24;
-        margin-bottom: 12;
-        margin-start: 12;
-        margin-end: 12;
 
-        Image {
+        Box {
+          vexpand: true;
+        }
+
+        Adw.StatusPage {
           icon-name: "preferences-desktop-theme";
-          pixel-size: 64;
+          title: _("Choose your look");
+          description: _("Pick a colour scheme that feels most comfortable for your eyes.");
+
+          styles [
+            "compact",
+          ]
+
+          child: Box {
+            orientation: horizontal;
+            spacing: 16;
+            halign: center;
+
+            CheckButton light_btn {
+              active: true;
+
+              styles [
+                "box",
+              ]
+
+              Box {
+                orientation: vertical;
+                spacing: 6;
+                margin-top: 12;
+                margin-bottom: 12;
+                margin-start: 16;
+                margin-end: 16;
+
+                Image {
+                  icon-name: "display-brightness-symbolic";
+                  pixel-size: 32;
+                }
+
+                Label {
+                  label: _("Light Mode");
+                }
+              }
+            }
+
+            CheckButton dark_btn {
+              group: light_btn;
+
+              styles [
+                "box",
+              ]
+
+              Box {
+                orientation: vertical;
+                spacing: 6;
+                margin-top: 12;
+                margin-bottom: 12;
+                margin-start: 16;
+                margin-end: 16;
+
+                Image {
+                  icon-name: "weather-clear-night-symbolic";
+                  pixel-size: 32;
+                }
+
+                Label {
+                  label: _("Dark Mode");
+                }
+              }
+            }
+
+            CheckButton auto_btn {
+              group: light_btn;
+
+              styles [
+                "box",
+              ]
+
+              Box {
+                orientation: vertical;
+                spacing: 6;
+                margin-top: 12;
+                margin-bottom: 12;
+                margin-start: 16;
+                margin-end: 16;
+
+                Image {
+                  icon-name: "weather-clear-night-symbolic";
+                  pixel-size: 32;
+                }
+
+                Label {
+                  label: _("Automatic");
+                }
+              }
+            }
+          };
         }
 
-        Label {
-          label: _("Choose your look");
-          styles ["title-1"]
-        }
-
-        Label {
-          wrap: true;
-          justify: center;
-          label: _("Pick a theme and accent colour to personalise the experience.");
-          styles ["body", "dim-label"]
-        }
-
-        /* Theme selector */
         Box {
-          orientation: horizontal;
-          spacing: 12;
-          halign: center;
-
-          CheckButton light_btn {
-            group: light_btn;
-
-            Box {
-              orientation: vertical;
-
-              Image {
-                icon-name: "weather-clear";
-                pixel-size: 48;
-              }
-
-              Label { label: _("Light"); }
-            }
-          }
-
-          CheckButton dark_btn {
-            group: light_btn;
-
-            Box {
-              orientation: vertical;
-
-              Image {
-                icon-name: "weather-clear-night";
-                pixel-size: 48;
-              }
-
-              Label { label: _("Dark"); }
-            }
-          }
-
-          CheckButton auto_btn {
-            group: light_btn;
-
-            Box {
-              orientation: vertical;
-
-              Image {
-                file: "resource:///page/fuwa/welcome/data/appearance-scheduled.svg";
-                pixel-size: 48;
-              }
-
-              Label { label: _("Auto"); }
-            }
-          }
+          vexpand: true;
         }
-
-        /* Accent colors */
-        Box {
-          orientation: horizontal;
-          halign: center;
-          spacing: 8;
-
-          CheckButton accents1 { group: accents1; }
-          CheckButton accents2 { group: accents1; }
-          CheckButton accents3 { group: accents1; }
-          CheckButton accents4 { group: accents1; }
-          CheckButton accents5 { group: accents1; }
-          CheckButton accents6 { group: accents1; }
-        }
-
-        Box { vexpand: true; }
 
         CenterBox {
+          margin-bottom: 6;
+          margin-top: 6;
+          margin-start: 6;
+          margin-end: 6;
 
           start-widget: Button back4 {
             label: _("Back");
             action-name: "navigation.pop";
+            width-request: 80;
           };
 
-          center-widget: Box {
-            margin-top: 10;
-            margin-bottom: 10;
+          center-widget: LevelBar {
+            min-value: 0;
+            max-value: 1;
+            value: 0.80;
+            hexpand: true;
+            valign: center;
             margin-start: 24;
             margin-end: 24;
 
-            LevelBar {
-              min-value: 0;
-              max-value: 1;
-              value: 1.0;
-              hexpand: true;
-            }
+            styles [
+              "accent",
+            ]
           };
 
           end-widget: Button finish2 {
-            label: _("Finish");
+            label: _("Next");
+            action-name: "navigation.push";
+            action-target: "'page5'";
+            width-request: 80;
+
+            styles [
+              "suggested-action",
+            ]
+          };
+        }
+      }
+    }
+
+    Adw.NavigationPage page5 {
+      tag: "page5";
+      title: _("Quick Tips");
+
+      Box {
+        orientation: vertical;
+
+        Box {
+          vexpand: true;
+        }
+
+        Adw.StatusPage {
+          title: _("Getting Around");
+          description: _("Here are a few quick tips to help you use your new desktop layout.");
+
+          styles [
+            "compact",
+          ]
+
+          child: Adw.PreferencesGroup {
+            Adw.ActionRow {
+              title: _("Find your apps");
+              subtitle: _("Click 'Applications' in the top-left corner of the screen to see all your installed apps.");
+              icon-name: "view-app-grid-symbolic";
+            }
+
+            Adw.ActionRow {
+              title: _("Quick controls");
+              subtitle: _(
+                "Click the icons in the top-right corner to easily adjust Wi-Fi, volume, and battery settings."
+              );
+              icon-name: "emblem-system-symbolic";
+            }
+
+            Adw.ActionRow {
+              title: _("Your favorite apps");
+              subtitle: _("The Dock at the bottom of the screen holds your favorite apps for quick access.");
+              icon-name: "view-pinned-symbolic";
+            }
+          };
+        }
+
+        Box {
+          vexpand: true;
+        }
+
+        CenterBox {
+          margin-bottom: 6;
+          margin-top: 6;
+          margin-start: 6;
+          margin-end: 6;
+
+          start-widget: Button back5 {
+            label: _("Back");
+            action-name: "navigation.pop";
+            width-request: 80;
+          };
+
+          center-widget: LevelBar {
+            min-value: 0;
+            max-value: 1;
+            value: 1.0;
+            hexpand: true;
+            valign: center;
+            margin-start: 24;
+            margin-end: 24;
+
+            styles [
+              "accent",
+            ]
+          };
+
+          end-widget: Button finish3 {
+            label: _("Get Started");
             action-name: "app.quit";
-            styles ["suggested-action"]
+            width-request: 80;
+
+            styles [
+              "suggested-action",
+            ]
           };
         }
       }
