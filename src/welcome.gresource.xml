@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/page/fuwa/welcome">
+    <file preprocess="xml-stripblanks">window.ui</file>
+    <file alias="data/appearance-dark.svg">../data/appearance-dark.svg</file>
+    <file alias="data/appearance-default.svg">../data/appearance-default.svg</file>
+    <file alias="data/appearance-scheduled.svg">../data/appearance-scheduled.svg</file>
+  </gresource>
+</gresources>

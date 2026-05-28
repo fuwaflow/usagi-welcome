@@ -1,0 +1,337 @@
+using Gtk 4.0;
+using Adw 1;
+using Granite 7.0;
+
+template $WelcomeWindow : Adw.ApplicationWindow {
+
+  title: _("meow");
+
+  default-width: 400;
+  default-height: 350;
+
+  Adw.NavigationView nav {
+
+    Adw.NavigationPage page1 {
+      title: _("Welcome");
+
+      Box {
+        orientation: vertical;
+        spacing: 8;
+        margin-top: 24;
+        margin-bottom: 12;
+        margin-start: 12;
+        margin-end: 12;
+
+        Image {
+          icon-name: "distributor-logo";
+          pixel-size: 64;
+        }
+
+        Label {
+          label: _("Welcome to Cocoa");
+          styles ["title-1", "accent"]
+        }
+
+        Label {
+          wrap: true;
+          justify: center;
+          label: _("Cocoa is a Fedora Atomic image with Pantheon and batteries included.");
+          styles ["body", "dim-label"]
+        }
+
+        Box { vexpand: true; }
+
+        CenterBox {
+
+          start-widget: Button skip {
+            label: _("Skip");
+            action-name: "app.quit";
+          };
+
+          center-widget: Box {
+            margin-top: 10;
+            margin-bottom: 10;
+            margin-start: 24;
+            margin-end: 24;
+
+            LevelBar {
+              min-value: 0;
+              max-value: 1;
+              value: 0.25;
+              hexpand: true;
+              styles ["accent"]
+            }
+          };
+
+          end-widget: Button next1 {
+            label: _("Next");
+            action-name: "navigation.push";
+            action-target: "'page2'";
+            styles ["suggested-action"]
+          };
+        }
+      }
+    }
+
+    Adw.NavigationPage page2 {
+      tag: "page2";
+      title: _("meow?");
+
+      Box {
+        orientation: vertical;
+        spacing: 12;
+        margin-top: 24;
+        margin-bottom: 12;
+        margin-start: 12;
+        margin-end: 12;
+
+        Image {
+          icon-name: "distributor-logo";
+          pixel-size: 64;
+        }
+
+        Label {
+          label: _("meow meow meow");
+          styles ["title-1"]
+        }
+
+        Label {
+          wrap: true;
+          label: _("meow. meow meow meow meow meow meow meow meow meow.");
+          styles ["body"]
+        }
+
+        Label {
+          wrap: true;
+          label: _("meow meow meow meow meow meow. prrr meow meow meow meow.");
+          styles ["body", "dim-label"]
+        }
+
+        Box { vexpand: true; }
+
+        CenterBox {
+
+          start-widget: Button back2 {
+            label: _("Back");
+            action-name: "navigation.pop";
+          };
+
+          center-widget: Box {
+            margin-top: 10;
+            margin-bottom: 10;
+            margin-start: 24;
+            margin-end: 24;
+
+            LevelBar {
+              min-value: 0;
+              max-value: 1;
+              value: 0.5;
+              hexpand: true;
+            }
+          };
+
+          end-widget: Button next2 {
+            label: _("Next");
+            action-name: "navigation.push";
+            action-target: "'page3'";
+            styles ["suggested-action"]
+          };
+        }
+      }
+    }
+
+    Adw.NavigationPage page3 {
+      tag: "page3";
+      title: _("meow");
+
+      Box {
+        orientation: vertical;
+        spacing: 12;
+        margin-top: 24;
+        margin-bottom: 12;
+        margin-start: 12;
+        margin-end: 12;
+
+        Image {
+          icon-name: "distributor-logo";
+          pixel-size: 64;
+        }
+
+        Label {
+          label: _("meow meow meow meow");
+          styles ["title-1"]
+        }
+
+        Label {
+          wrap: true;
+          label: _("• meow meow meow\n• meow meow meow meow\n• meow meow meow meow meow\n• meow meow meow meow meow meow");
+          styles ["body"]
+        }
+
+        Adw.ActionRow {
+          title: _("meow?");
+          subtitle: _("meow meow meow meow meow meow meow");
+          styles ["card"]
+        }
+
+        Box { vexpand: true; }
+
+        CenterBox {
+
+          start-widget: Button back3 {
+            label: _("Back");
+            action-name: "navigation.pop";
+          };
+
+          center-widget: Box {
+            margin-top: 10;
+            margin-bottom: 10;
+            margin-start: 24;
+            margin-end: 24;
+
+            LevelBar {
+              min-value: 0;
+              max-value: 1;
+              value: 0.8;
+              hexpand: true;
+            }
+          };
+
+          end-widget: Button next3 {
+            label: _("Next");
+            action-name: "navigation.push";
+            action-target: "'page4'";
+            styles ["suggested-action"]
+          };
+        }
+      }
+    }
+
+    Adw.NavigationPage page4 {
+      tag: "page4";
+      title: _("Choose your look");
+
+      Box {
+        orientation: vertical;
+        spacing: 16;
+        margin-top: 24;
+        margin-bottom: 12;
+        margin-start: 12;
+        margin-end: 12;
+
+        Image {
+          icon-name: "preferences-desktop-theme";
+          pixel-size: 64;
+        }
+
+        Label {
+          label: _("Choose your look");
+          styles ["title-1"]
+        }
+
+        Label {
+          wrap: true;
+          justify: center;
+          label: _("Pick a theme and accent colour to personalise the experience.");
+          styles ["body", "dim-label"]
+        }
+
+        /* Theme selector */
+        Box {
+          orientation: horizontal;
+          spacing: 12;
+          halign: center;
+
+          CheckButton light_btn {
+            group: light_btn;
+
+            Box {
+              orientation: vertical;
+
+              Image {
+                icon-name: "weather-clear";
+                pixel-size: 48;
+              }
+
+              Label { label: _("Light"); }
+            }
+          }
+
+          CheckButton dark_btn {
+            group: light_btn;
+
+            Box {
+              orientation: vertical;
+
+              Image {
+                icon-name: "weather-clear-night";
+                pixel-size: 48;
+              }
+
+              Label { label: _("Dark"); }
+            }
+          }
+
+          CheckButton auto_btn {
+            group: light_btn;
+
+            Box {
+              orientation: vertical;
+
+              Image {
+                file: "resource:///page/fuwa/welcome/data/appearance-scheduled.svg";
+                pixel-size: 48;
+              }
+
+              Label { label: _("Auto"); }
+            }
+          }
+        }
+
+        /* Accent colors */
+        Box {
+          orientation: horizontal;
+          halign: center;
+          spacing: 8;
+
+          CheckButton accents1 { group: accents1; }
+          CheckButton accents2 { group: accents1; }
+          CheckButton accents3 { group: accents1; }
+          CheckButton accents4 { group: accents1; }
+          CheckButton accents5 { group: accents1; }
+          CheckButton accents6 { group: accents1; }
+        }
+
+        Box { vexpand: true; }
+
+        CenterBox {
+
+          start-widget: Button back4 {
+            label: _("Back");
+            action-name: "navigation.pop";
+          };
+
+          center-widget: Box {
+            margin-top: 10;
+            margin-bottom: 10;
+            margin-start: 24;
+            margin-end: 24;
+
+            LevelBar {
+              min-value: 0;
+              max-value: 1;
+              value: 1.0;
+              hexpand: true;
+            }
+          };
+
+          end-widget: Button finish2 {
+            label: _("Finish");
+            action-name: "app.quit";
+            styles ["suggested-action"]
+          };
+        }
+      }
+    }
+  }
+}

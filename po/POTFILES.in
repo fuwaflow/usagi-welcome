@@ -1,0 +1,8 @@
+# List of source files containing translatable strings.
+# Please keep this file sorted alphabetically.
+data/page.fuwa.welcome.desktop.in
+data/page.fuwa.welcome.metainfo.xml.in
+data/page.fuwa.welcome.gschema.xml
+src/main.vala
+src/window.vala
+src/window.blp
