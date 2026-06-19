@@ -18,7 +18,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-public class Welcome.Application : Gtk.Application {
+public class Welcome.Application : Adw.Application {
     public Application () {
         Object (
             application_id: "page.fuwa.welcome",
