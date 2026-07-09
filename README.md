@@ -1,3 +1,3 @@
 # welcome
 
-A description of this project.
+a welcome/onboarding app for my usagi image
