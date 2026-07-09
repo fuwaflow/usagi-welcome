@@ -166,6 +166,9 @@ template $WelcomeWindow: Adw.ApplicationWindow {
                 "System updates install in the background without interrupting your work. If anything ever goes wrong, your computer automatically can roll back to the last working update."
               );
               icon-name: "system-run-symbolic";
+              selectable: false;
+              can-focus: false;
+
             }
           };
         }
@@ -387,6 +390,8 @@ template $WelcomeWindow: Adw.ApplicationWindow {
               title: _("Find your apps");
               subtitle: _("Click 'Applications' in the top-left corner of the screen to see all your installed apps.");
               icon-name: "view-app-grid-symbolic";
+              selectable: false;
+              can-focus: false;
             }
 
             Adw.ActionRow {
@@ -395,12 +400,16 @@ template $WelcomeWindow: Adw.ApplicationWindow {
                 "Click the icons in the top-right corner to easily adjust Wi-Fi, volume, and battery settings."
               );
               icon-name: "emblem-system-symbolic";
+              selectable: false;
+              can-focus: false;
             }
 
             Adw.ActionRow {
               title: _("Your favorite apps");
               subtitle: _("The Dock at the bottom of the screen holds your favorite apps for quick access.");
               icon-name: "view-pinned-symbolic";
+              selectable: false;
+              can-focus: false;
             }
           };
         }
