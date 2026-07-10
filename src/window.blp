@@ -244,6 +244,8 @@ template $WelcomeWindow: Adw.ApplicationWindow {
 
             CheckButton light_btn {
               active: true;
+              action-name: "app.set-theme";
+              action-target: "'light'";
 
               styles [
                 "box",
@@ -270,6 +272,8 @@ template $WelcomeWindow: Adw.ApplicationWindow {
 
             CheckButton dark_btn {
               group: light_btn;
+              action-name: "app.set-theme";
+              action-target: "'dark'";
 
               styles [
                 "box",
@@ -296,6 +300,8 @@ template $WelcomeWindow: Adw.ApplicationWindow {
 
             CheckButton auto_btn {
               group: light_btn;
+              action-name: "app.set-theme";
+              action-target: "'auto'";
 
               styles [
                 "box",
